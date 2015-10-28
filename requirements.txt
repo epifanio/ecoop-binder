@@ -1,0 +1,8 @@
+envoy
+scipy
+statsmodels
+pandas
+matplotlib
+paramiko
+qrcode
+IPython
