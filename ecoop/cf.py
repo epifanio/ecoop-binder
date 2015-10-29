@@ -117,7 +117,7 @@ class cfData():
                     }
                 }
                 #display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
+                #print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['nao_get'] = %s" % jsonld))
 
 

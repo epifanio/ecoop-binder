@@ -35,11 +35,14 @@
 # DEALINGS IN THE SOFTWARE.
 ###############################################################################
 
+from IPython.core.display import Javascript, display
+
 def initProv():
     prov = {"@id": "http://not.sure/yet#notebook_run",
         "@type": [
             "http://www.w3.org/ns/prov#Activity"
         ]}
+    display(Javascript("IPython.notebook.metadata['ecoop_prov'] = {}"))
     return prov
 
 def provStartedAtTime(now):
