@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ecoop.printer &mdash; ecoop 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="ecoop 0.1.1 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body role="document">
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../_static/ECOOP-logo.png" border="0" alt="py4sci"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">home</a>|&nbsp;</li>
+        <li><a href="../../search.html">search</a>|&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for ecoop.printer</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">os</span>
+<div class="viewcode-block" id="openDocument"><a class="viewcode-back" href="../../ecoop.html#ecoop.printer.openDocument">[docs]</a><span class="k">def</span> <span class="nf">openDocument</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s">&#39;twocolumn&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    return a portion of latex template to begin a document to generate a standard or twocolumns odf document</span>
+
+<span class="sd">    :param str col: onecolumn or twocolumn</span>
+<span class="sd">    :return: partial latex template</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;\documentclass{article}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{multicol}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage[english]{babel}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{blindtext}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage[pdftex]{graphicx}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{graphicx}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{wrapfig}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{hyperref}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage{fancyvrb}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">usepackage[utf8]{inputenc}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">begin{document}</span>
+<span class="s">        </span><span class="se">\\</span><span class="s">begin{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">col</span>
+    <span class="k">return</span> <span class="n">doc</span>
+    </div>
+<div class="viewcode-block" id="closeDocument"><a class="viewcode-back" href="../../ecoop.html#ecoop.printer.closeDocument">[docs]</a><span class="k">def</span> <span class="nf">closeDocument</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s">&#39;twocolumn&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    return a portion of latex template to close a document to generate a standard or twocolumns odf document</span>
+
+<span class="sd">    :param str col: onecolumn or twocolumn</span>
+<span class="sd">    :return: partial latex template</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;\end{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        \end{document}</span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">doc</span>
+</div>
+<div class="viewcode-block" id="addSection"><a class="viewcode-back" href="../../ecoop.html#ecoop.printer.addSection">[docs]</a><span class="k">def</span> <span class="nf">addSection</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    return a portion of latex template to ad section to a latex document</span>
+
+<span class="sd">    :param str name: title for</span>
+<span class="sd">    :param str data:</span>
+<span class="sd">    :param str fig:</span>
+<span class="sd">    :return: partial latex template</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;\section{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        \input{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        </span><span class="si">%s</span><span class="s"></span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">doc</span>
+    </div>
+<div class="viewcode-block" id="addSubSection"><a class="viewcode-back" href="../../ecoop.html#ecoop.printer.addSubSection">[docs]</a><span class="k">def</span> <span class="nf">addSubSection</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;\subsection{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        \input{</span><span class="si">%s</span><span class="s">}</span>
+<span class="s">        </span><span class="si">%s</span><span class="s"></span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">doc</span>
+    </div>
+<div class="viewcode-block" id="addFigure"><a class="viewcode-back" href="../../ecoop.html#ecoop.printer.addFigure">[docs]</a><span class="k">def</span> <span class="nf">addFigure</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">metadata</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span><span class="s">&quot;&quot;&quot;</span><span class="se">\\</span><span class="s">begin{figure}[h]</span>
+<span class="s">        {\includegraphics[width=60mm]{</span><span class="si">%s</span><span class="s">}}</span>
+<span class="s">        \caption{</span><span class="si">%s</span><span class="s"> - \href{</span><span class="si">%s</span><span class="s">}{metadata}.}</span>
+<span class="s">        \end{figure}</span>
+<span class="s">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">doc</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">home</a>|&nbsp;</li>
+        <li><a href="../../search.html">search</a>|&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, Massimo Di Stefano.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
