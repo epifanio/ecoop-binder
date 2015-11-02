@@ -45,17 +45,12 @@ def initProv():
     display(Javascript("IPython.notebook.metadata['ecoop_prov'] = {}"))
     return prov
 
-def provStartedAtTime(now):
-    StartedAtTime = [{"@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+def provGetTime(now):
+    GetTime = [{"@type": "http://www.w3.org/2001/XMLSchema#dateTime",
                       "@value": '%s' % now
                       }]
-    return StartedAtTime
+    return GetTime
 
-def provEndedAtTime(now):
-    EndedAtTime = [{"@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-                    "@value": '%s' % now
-                    }]
-    return EndedAtTime
 
 def provWasAssociatedWith(usernames):
     usernames = usernames.split(" ")
