@@ -80,7 +80,7 @@ class cfData():
         """
         #source_code_link = "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfData.nao_get"
         try:
-            naodata = pd.read_csv(url, sep='  ', header=0, skiprows=0, index_col=0, parse_dates=True, skip_footer=1)
+            naodata = pd.read_csv(url, sep='  ', header=0, skiprows=0, index_col=0, parse_dates=True, skip_footer=1, engine='python')
             if verbose:
                 print('dataset used: %s' % url)
             if save:
@@ -238,7 +238,7 @@ class cfData():
             ts_raw = pd.read_table(url, sep=' ', skiprows=1,
                                    names=['year', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct',
                                           'nov', 'dec'], skipinitialspace=True, parse_dates=True, skipfooter=4,
-                                   index_col=0)
+                                   index_col=0, engine='python')
             if verbose:
                 print('dataset used: %s' % url)
             ts_raw.replace(-9.99900000e+01, np.NAN, inplace=True)
