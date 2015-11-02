@@ -2,9 +2,7 @@
 
 [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/epifanio/ecoop-binder)
 
-
 ![StickyLogo](http://tw.rpi.edu/img_projects/ECOOP-logo.png)
-
 
 ECO-OP
 =====
