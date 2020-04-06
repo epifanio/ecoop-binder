@@ -22,11 +22,11 @@ RUN apt-get install -y rubygems
 RUN gem install gist
 
 RUN apt-get install -y git
-RUN git clone https://github.com/epifanio/ecoop-binder && cd ecoop-binder && python setup.py install && cd .. && rm -rf ecoop-binder
+
+RUN git clone https://github.com/epifanio/ecoop-binder && cd ecoop-binder && pip install -r requirements.txt && python setup.py install && cd .. && rm -rf ecoop-binder
 COPY ESR_Test_executed.ipynb .
 
-ADD requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+
 
 RUN chmod -R 777 /home/jovyan && chown -R jovyan /home/jovyan
 
