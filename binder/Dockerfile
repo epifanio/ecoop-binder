@@ -24,6 +24,7 @@ RUN gem install gist
 RUN git clone https://github.com/epifanio/ecoop-binder && cd ecoop-binder && python setup.py install
 COPY ESR_Test_executed.ipynb .
 
-USER jovyan
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+
+USER jovyan
