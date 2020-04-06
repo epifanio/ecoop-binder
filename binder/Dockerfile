@@ -27,4 +27,6 @@ COPY ESR_Test_executed.ipynb .
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
+RUN apt-get install -y git
+
 USER jovyan
