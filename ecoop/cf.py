@@ -80,7 +80,7 @@ class cfData():
         """
         #source_code_link = "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfData.nao_get"
         try:
-            naodata = pd.read_csv(url, sep='  ', header=0, skiprows=0, index_col=0, parse_dates=True, skip_footer=1, engine='python')
+            naodata = pd.read_csv(url, sep='  ', header=0, skiprows=0, index_col=0, parse_dates=True, skipfooter=1, engine='python')
             if verbose:
                 print('dataset used: %s' % url)
             if save:
