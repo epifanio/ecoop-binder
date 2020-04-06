@@ -1,6 +1,6 @@
 FROM jupyter/base-notebook:17aba6048f44
 ENV TAG="17aba6048f44"
-COPY binder/README.ipynb .
+COPY binder/index.ipynb .
 
 MAINTAINER Massimo Di Stefano <epiesasha@me.com>
 
@@ -22,7 +22,5 @@ RUN apt-get install -y rubygems
 RUN gem install gist
 
 USER jovyan
-# Install requirements for Python 2
 ADD requirements.txt requirements.txt
-# Install requirements for Python 3
 RUN pip install -r requirements.txt
