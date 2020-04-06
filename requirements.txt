@@ -6,3 +6,4 @@ matplotlib
 paramiko
 qrcode
 IPython
+pillow
