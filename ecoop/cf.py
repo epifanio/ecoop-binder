@@ -369,8 +369,8 @@ class cfPlot():
             y_n = y[np.where(y < 0)[0]]
             fig = plt.figure(figsize=(fig_height, fig_width))
             ax1 = fig.add_subplot(111)
-            ax1.bar(x_n, y_n, 0.8, facecolor='b', label=name + ' < 0')
-            ax1.bar(x_p, y_p, 0.8, facecolor='r', label=name + ' > 0')
+            ax1.bar(x=x_n, height=y_n.flatten(), width=0.8, facecolor='b', label=name + ' < 0')
+            ax1.bar(x=x_p, height=y_p.flatten(), width=0.8, facecolor='r', label=name + ' > 0')
             ax1.grid(grid)
             if ylabel != '':
                 ax1.set_ylabel(ylabel)
