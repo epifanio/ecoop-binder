@@ -11,3 +11,4 @@ rdflib
 prov
 shortid
 pydot
+rdflib-jsonld
