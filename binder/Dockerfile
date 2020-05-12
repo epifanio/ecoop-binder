@@ -25,8 +25,9 @@ RUN apt-get install -y git
 
 RUN git clone https://github.com/epifanio/ecoop-binder && cd ecoop-binder && pip install -r requirements.txt && python setup.py install && cd .. && rm -rf ecoop-binder
 COPY ESR_Test_executed.ipynb .
+COPY prov .
 
-
+RUN apt-get install -y cpanminus
 
 RUN chmod -R 777 /home/jovyan && chown -R jovyan /home/jovyan
 
