@@ -28,7 +28,10 @@ COPY ESR_Test_executed.ipynb .
 COPY prov .
 
 RUN apt-get install -y cpanminus
+RUN cpanm --force RDF::Trine::Exporter::GraphViz
 
 RUN chmod -R 777 /home/jovyan && chown -R jovyan /home/jovyan
 
 USER jovyan
+
+curl 'https://fastapi.metacpan.org/module/VOJ/RDF-Trine-Exporter-GraphViz-0.141/bin/rdfdot'
