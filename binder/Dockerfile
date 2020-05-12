@@ -27,7 +27,7 @@ RUN git clone https://github.com/epifanio/ecoop-binder && cd ecoop-binder && pip
 COPY ESR_Test_executed.ipynb .
 COPY prov .
 
-RUN apt-get install -y cpanminus && cpanm rdfdot
+RUN apt-get install -y cpanminus
 
 RUN chmod -R 777 /home/jovyan && chown -R jovyan /home/jovyan
 
