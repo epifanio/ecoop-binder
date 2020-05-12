@@ -34,4 +34,3 @@ RUN chmod -R 777 /home/jovyan && chown -R jovyan /home/jovyan
 
 USER jovyan
 
-curl 'https://fastapi.metacpan.org/module/VOJ/RDF-Trine-Exporter-GraphViz-0.141/bin/rdfdot'
