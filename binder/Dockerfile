@@ -16,7 +16,7 @@ ENV LANG en_US.UTF-8
 
 # Add dependency
 RUN apt-get update
-RUN apt-get install -y graphviz grass-core gdal-bin texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended
+RUN apt-get install -y build-essential graphviz grass-core gdal-bin texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended
 
 RUN apt-get install -y rubygems
 RUN gem install gist
