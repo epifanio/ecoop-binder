@@ -1,4 +1,4 @@
- 
+rdflib-jsonld
 envoy
 scipy
 statsmodels
@@ -7,3 +7,4 @@ matplotlib
 paramiko
 qrcode
 IPython
+
