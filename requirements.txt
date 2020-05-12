@@ -7,3 +7,7 @@ paramiko
 qrcode
 IPython
 pillow
+rdflib
+prov
+shortid
+pydot
