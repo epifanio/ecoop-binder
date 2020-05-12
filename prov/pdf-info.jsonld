@@ -1,0 +1,210 @@
+{
+	"_comment": "The things I am still not clear: 1) how we wanna deal with the library hierarchy, for example, nao_get() is a function of the cfData class of the cf package of the ecoop library; 2) how we wanna relate an ecoop:Library with its DOAP URL, currently I am using ecoop_ext:hasDoap; and 3) if it is correct to say a function call used a code cell",
+	"@context": {
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+		"ecoop": "http://escience.rpi.edu/ontology/eco-op/ecoopProv.ttl#",
+		"owl": "http://www.w3.org/2002/07/owl#",
+		"foaf": "http://xmlns.com/foaf/0.1/",
+		"skos": "http://www.w3.org/2009/08/skos-reference/skos.rdf#",
+		"dctype": "http://purl.org/dc/dcmitype/",
+		"prov": "http://www.w3.org/ns/prov#",
+		"dct": "http://purl.org/dc/terms/",
+		"xsd": "http://www.w3.org/2001/XMLSchema#",
+		"dcat": "http://www.w3.org/ns/dcat#",
+		"qudt": "http://qudt.org/1.1/schema/qudt#",
+		"ex" : "http://not.sure/yet#",
+		"ecoop_ext": "http://escience.rpi.edu/ontology/eco-op/ecoopProvExt.ttl#"
+	},
+	"@graph": [
+		{
+			"@id": "ex:NAO_csv",
+			"@type": ["prov:Entity", "ecoop:Dataset"],
+			"prov:wasGeneratedBy": {
+				"@id": "ex:functionCall_nao_get_Monday_09_June_2014_03_31_33_PM",
+				"@type": "ecoop:FunctionCall",
+				"prov:used": [
+					{
+						"@id": "ex:NAO_txt",
+						"@type": "ecoop:Dataset",
+						"dcat:distribution": {
+							"@type": "dcat:Distribution",
+							"dcat:accessURL": {
+								"@id": "https://climatedataguide.ucar.edu/sites/default/files/climate_index_files/nao_station_djfm.txt"
+							}
+						}
+					},
+					{
+						"@id": "ex:nao_get_cell",
+						"@type": "ecoop:CodeCell",
+						"dct:description": "naodata = cfd.nao_get(save=ID, csvout=\"nao.csv\", prov=True)"
+					},
+					{
+						"@id": "ex:nao_get",
+						"@type": "ecoop:Library",
+						"ecoop:accessURL": {
+							"@id": "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfData.nao_get"
+						},
+						"dct:description": "the nao_get() method of the ecoop.cf.cfData class"
+					}
+				],
+				"_comment": "We may wanna add prov:startedAtTime, prov:endedAtTime and prov:wasAssociatedWith information later"
+			}
+		},
+		
+		{
+			"@id": "ex:AMO_csv",
+			"@type": ["prov:Entity", "ecoop:Dataset"],
+			"prov:wasGeneratedBy": {
+				"@id": "ex:functionCall_amo_get_Monday_09_June_2014_03_31_33_PM",
+				"@type": "ecoop:FunctionCall",
+				"prov:used": [
+					{
+						"@id": "ex:AMO_data",
+						"@type": "ecoop:Dataset",
+						"dcat:distribution": {
+							"@type": "dcat:Distribution",
+							"dcat:accessURL": {
+								"@id": "http://www.cdc.noaa.gov/Correlation/amon.us.long.data"
+							}
+						}						
+					},
+					{
+						"@id": "ex:amo_get_cell",
+						"@type": "ecoop:CodeCell",
+						"dct:description": "# AMO\namodata = cfd.amo_get(save=ID, csvout=\"amo.csv\")\ncfp.plot_index(name='AMO_lowess', xticks=10, xticks_fontsize=10, \ndata=amodata, nb='y', scategory='lowess', frac=1./6, it=6, \noutput=ID, dateformat=True, figsave=\"amo.png\", prov=True)"
+					},
+					{
+						"@id": "ex:amo_get",
+						"@type": "ecoop:Library",
+						"ecoop:accessURL": "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfData.amo_get",
+						"dct:description": "the amo_get() method of the ecoop.cf.cfData class"
+					}
+				],
+				"_comment": "We may wanna add prov:startedAtTime, prov:endedAtTime and prov:wasAssociatedWith information later"
+			}
+		},
+		
+		{
+			"@id": "ex:NAO_figure",
+			"@type": ["prov:Entity", "ecoop:Figure"],
+			"ecoop:hasImage": {
+				"@id": "ex:nao.png",
+				"@type": "ecoop:Image",
+				"prov:wasGeneratedBy": {
+					"@id": "ex:functionCall_nao_plot_Monday_09_June_2014_03_31_33_PM",
+					"@type": "ecoop:FunctionCall",
+					"prov:used": [
+						{
+							"@id": "ex:NAO_csv"
+						},
+						{
+							"@id": "ex:nao_plot_cell",
+							"@type": "ecoop:CodeCell",
+							"dct:description": "# NAO\nnaodata = cfd.nao_get(save=ID, csvout=\"nao.csv\")\ncfp.plot_index(name='NAO_lowess', xticks=10, xticks_fontsize=10, \n               data=naodata, nb='y', scategory='lowess', frac=1./6, it=6, \n               output=ID, dateformat=True, figsave=\"nao.png\", prov=True)"
+						},
+						{
+							"@id": "ex:plot_index",
+							"@type": "ecoop:Library",
+							"ecoop:accessURL": "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfPlot.plot_index",
+							"dct:description": "the plot_index() method of the ecoop.cf.cfPlot class"
+						}
+					],
+					"_comment": "We may wanna add prov:startedAtTime, prov:endedAtTime and prov:wasAssociatedWith information later"
+				}
+			}
+		},
+		
+		{
+			"@id": "ex:AMO_figure",
+			"@type": ["prov:Entity", "ecoop:Figure"],
+			"ecoop:hasImage": {
+				"@id": "ex:amo.png",
+				"@type": "ecoop:Image",
+				"prov:wasGeneratedBy": {
+					"@id": "ex:functionCall_amo_plot__Monday_09_June_2014_03_31_33_PM",
+					"@type": "ecoop:FunctionCall",
+					"prov:used": [
+						{
+							"@id": "ex:AMO_csv"
+						},
+						{
+							"@id": "ex:amo_plot_cell",
+							"@type": "ecoop:CodeCell",
+							"dct:description": "# AMO\namodata = cfd.amo_get(save=ID, csvout=\"amo.csv\")\ncfp.plot_index(name='AMO_lowess', xticks=10, xticks_fontsize=10, \n               data=amodata, nb='y', scategory='lowess', frac=1./6, it=6, \n               output=ID, dateformat=True, figsave=\"amo.png\", prov=True)"
+						},
+						{
+							"@id": "ex:plot_index"
+						}
+					],
+					"_comment": "We may wanna add prov:startedAtTime, prov:endedAtTime and prov:wasAssociatedWith information later"
+				}
+			}
+		},
+		
+		{
+			"@id": "ex:ecoop_software",
+			"@type": "ecoop:Library",
+			"ecoop_ext:hasDoap": {"@id": "https://github.com/tetherless-world/ecoop/blob/master/pyecoop/prov/doap/doap_ecoop.xml"}
+		},
+		
+		{
+			"@id": "ex:ipython_software",
+			"@type": "ecoop:Library",
+			"ecoop_ext:hasDoap": {"@id": "https://github.com/tetherless-world/ecoop/blob/master/pyecoop/prov/doap/doap_ipython.xml"}
+		},
+		
+		{
+			"@id": "ex:epinux",
+			"@type": "foaf:Person",
+			"ecoop:address": "22 Millfield St Woods Hole MA US",
+			"ecoop:isMemberOf": [
+				{
+					"@id": "ex:ecoop_group", 
+					"@type": "foaf:Group", 
+					"foaf:name": "ECOOP"
+				}, 
+				{
+					"@id": "ex:TWC", 
+					"@type": "foaf:Organization", 
+					"foaf:name": "Tetherless World Constellation", 
+					"ecoop:subOrganizationOf": {
+						"@id": "ex:RPI", 
+						"@type": "foaf:Organization",
+						"foaf:name": "Rensselaer Polytechnic Institute"
+					}
+				}
+			],
+			"foaf:familyName": "Di Stefano",
+			"foaf:givenName": "Massimo",
+			"foaf:homepage": {"@id": "http://tw.rpi.edu/web/person/MassimoDiStefano", "@type": "foaf:Document"},
+			"foaf:mbox": {"@id": "mailto:distem@rpi.edu"},
+			"foaf:phone": {"@id": "tel:+1.508.292.40780"}
+		},
+		
+		{
+			"@id": "ex:JHare",
+			"@type": "foaf:Person",
+			"ecoop:address": "Rhode Island",
+			"ecoop:isMemberOf": [
+				{
+					"@id": "ex:ecosystem_monitoring_group",
+					"@type": "foaf:Group",
+					"foaf:name": "Ecosystem Monitoring Group"
+				}, 
+				{
+					"@id": "ex:NOAA_NEFSC",
+					"@type": "foaf:Organization",
+					"foaf:name": "NOAA NEFSC",
+					"ecoop:subOrganizationOf": {
+						"@id": "ex:NOAA",
+						"@type": "foaf:Organization",
+						"foaf:name": "NOAA"
+					}
+				}
+			],
+			"foaf:familyName": "Hare",
+			"foaf:givenName": "Jon"
+		}
+	]
+}
